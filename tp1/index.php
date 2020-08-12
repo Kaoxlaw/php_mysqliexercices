@@ -51,11 +51,11 @@
       <br><br>
       <fieldset id="fconnaissances">
         <legend>Connaissances: </legend>
-        <input type="checkbox" checked="checked" name="connaissances" value="HTML">HTML
+        <input type="checkbox" checked="checked" name="connaissances[]" value="HTML">HTML
         <!--Selection par défaut du choix HTML -->
-        <input type="checkbox" name="connaissances" value="CSS">CSS
-        <input type="checkbox" name="connaissances" value="Formulaires">Formulaires
-        <input type="checkbox" name="connaissances" value="JavaScript">JavaScript
+        <input type="checkbox" name="connaissances[]" value="CSS">CSS
+        <input type="checkbox" name="connaissances[]" value="Formulaires">Formulaires
+        <input type="checkbox" name="connaissances[]" value="JavaScript">JavaScript
       </fieldset>
       <br><br>
       <input type="submit" value="Envoyer">
@@ -97,7 +97,14 @@
     $telephone = $idcom->escape_string($_POST['telephone']);
     $semestre = $idcom->escape_string($_POST['semestre']);
     $niveauhtml = $idcom->escape_string($_POST['niveauhtml']);
-    $connaissances = $idcom->escape_string($_POST['connaissances']);
+
+    $result = "";
+    foreach ($_POST['connaissances'] as $val) {
+      $result .= $val . '/';
+    }
+    $connaissances = $idcom->escape_string($result);
+
+    // $connaissances = $idcom->escape_string($_POST['connaissances']);
 
     //etape6
     $request = "INSERT INTO formulaire (nom, prenom, ladate, lieu, adressepostale, cp, email, website, 
@@ -107,6 +114,7 @@
 
     //etape7
     $result = $idcom->query($request);
+
 
     //etape8
     if ($result) {
