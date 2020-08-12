@@ -80,9 +80,9 @@
 
   //etape4
   if (
-    !empty($_POST['nom']) && ($_POST['prenom']) && ($_POST['ladate']) && ($_POST['lieu'])
-    && ($_Post['adressepostale']) && ($_Post['cp']) && ($_Post['email']) && ($_Post['website'])
-    && ($_Post['telephone']) && ($_Post['semestre']) && ($_Post['niveauhtml']) && ($_Post['connaissances'])
+    !empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['ladate']) && !empty($_POST['lieu'])
+    && !empty($_POST['adressepostale']) && !empty($_POST['cp']) && !empty($_POST['email']) && !empty($_POST['website'])
+    && !empty($_POST['telephone']) && !empty($_POST['semestre']) && !empty($_POST['niveauhtml']) && !empty($_POST['connaissances'])
   ) {
 
     //etape5
