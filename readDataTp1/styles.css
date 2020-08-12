@@ -1,0 +1,38 @@
+body {
+  font-family: monospace;
+}
+
+h1 {
+  margin-top: 2em;
+  text-align: center;
+  border-bottom: solid black 10px;
+}
+
+#main {
+  padding: 50px;
+}
+
+legend {
+  text-transform: uppercase;
+}
+
+#fconnaissances {
+  color: red;
+  background-color: #c0c0ff;
+}
+
+label {
+  font-weight: bold; /**Ecrire les label en gras **/
+  display: block; /**1 - Affiche le label en block **/
+  width: 250px; /**2- Affiche le label en block sur une largeur de 250px **/
+  float: left; /** 3- Affiche le label le plus à gauche possible**/
+  padding-right: 1%; /** 4- Créé un espace de 1% à droite du label  **/
+}
+
+footer {
+  line-height: 2em; /** Crée un espace vertical **/
+  text-align: center;
+  border-top: solid blue 5px;
+  border-bottom: solid blue 5px;
+  font-size: x-small;
+}
