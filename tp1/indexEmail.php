@@ -3,17 +3,17 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Mon formulaire</title>
+  <title>Mon formulaire par Email</title>
   <link rel="stylesheet" href=styles.css>
 </head>
 
 <body>
   <header></header>
-  <h1> Mon premier formulaire</h1>
+  <h1> Mon formulaire par Email</h1>
 
   <form action="index.php" method="post">
     <fieldset id="main">
-      <legend>Notre formulaire :</legend>
+      <legend>Notre formulaire par Email :</legend>
       <label>Nom:</label>
       <input type="text" name="nom" value="Votre nom"><br><br>
       <label>Prénom:</label>
@@ -68,68 +68,12 @@
   <footer> Formulaire réalisé dans le cadre du TP 2 de la formation de développeurs intégrateurs et codeurs web</footer>
 
   <?php
-  //Etape1 Inclusion des paramètres de connexion
-  include_once("myparams.php");
 
-  //Etape2 Connexion au serveur
-  $idcom = new mysqli(HOST, USER, PASS, "formulaire", PORT);
-
-  //Etape3 Affichage d'un message en cas d'erreurs
-  if (!$idcom) {
-    echo "Connexion impossible à la base";
-    exit();
-  }
-
-  //etape4
   if (
     !empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['ladate']) && !empty($_POST['lieu'])
     && !empty($_POST['adressepostale']) && !empty($_POST['cp']) && !empty($_POST['email']) && !empty($_POST['website'])
     && !empty($_POST['telephone']) && !empty($_POST['semestre']) && !empty($_POST['niveauhtml']) && !empty($_POST['connaissances'])
   ) {
-
-    //etape5
-    $nom = $idcom->escape_string($_POST['nom']);
-    $prenom = $idcom->escape_string($_POST['prenom']);
-    $ladate = $_POST['ladate'];
-    $lieu = $idcom->escape_string($_POST['lieu']);
-    $adressepostale = $idcom->escape_string($_POST['adressepostale']);
-    $cp = $idcom->escape_string($_POST['cp']);
-    $email = $idcom->escape_string($_POST['email']);
-    $website = $idcom->escape_string($_POST['website']);
-    $telephone = $idcom->escape_string($_POST['telephone']);
-    $semestre = $idcom->escape_string($_POST['semestre']);
-    $niveauhtml = $idcom->escape_string($_POST['niveauhtml']);
-
-    $result = "";
-    foreach ($_POST['connaissances'] as $val) {
-      $result .= $val . '/';
-    }
-    $connaissances = $idcom->escape_string($result);
-
-    // $connaissances = $idcom->escape_string($_POST['connaissances']);
-
-    //etape6
-    $request = "INSERT INTO formulaire (nom, prenom, ladate, lieu, adressepostale, cp, email, website, 
-    telephone, semestre, niveauhtml, connaissances) VALUES 
-    ('$nom', '$prenom', '$ladate', '$lieu', '$adressepostale', '$cp', '$email', '$website', 
-    '$telephone','$semestre', '$niveauhtml','$connaissances')";
-
-    //etape7
-    $result = $idcom->query($request);
-
-
-    //etape8
-    if ($result) {
-      echo "Vous avez bien été enregistré au numéro $idcom->insert_id";
-    } else {
-      echo "error $idcom->error";
-    }
-
-    //Fermeture de la connexion
-    $idcom->close();
-
-    //MAil
-
     //L'Objet
     $objet = "Comfirmation de votre message sur GeekTeam";
     $texte = "Nous avons bien reçu votre message \n";
@@ -180,10 +124,7 @@
   } else {
     echo "Veuillez remplir le formulaire!";
   }
-
   ?>
-
-
 </body>
 
 </html>
